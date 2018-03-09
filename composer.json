@@ -1,0 +1,24 @@
+{
+    "name": "philexe/notify",
+    "description": "Push notifications to laravel view.",
+    "type": "laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Philip Munene",
+            "email": "philipkrips@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Philexe\\Notify\\NotifyServiceProvider"
+            ],
+            "aliases": {
+                "Notify": "Philexe\\Notify\\src\\Facades\\Notify"
+            }
+        }
+    }
+}
