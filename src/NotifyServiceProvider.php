@@ -16,8 +16,11 @@ class NotifyServiceProvider extends ServiceProvider
     {
        $this->publishes([
            __DIR__ . '/Config/Notify.php' => config_path('Notify.php'),
-           __DIR__.'/assets'  => public_path('notify')
        ]);
+
+       $this->publishes([
+             __DIR__.'/assets'  => public_path('notify'),
+       ], 'public');
 
     }
 

@@ -10,5 +10,15 @@
         }
     ],
     "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Philexe\\Notify\\NotifyServiceProvider"
+            ],
+            "aliases": {
+                "Notify": "Philexe\\Notify\\Facades\\Notify"
+            }
+        }
+    },
     "require": {}
 }
