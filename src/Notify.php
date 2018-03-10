@@ -31,39 +31,14 @@
      *
      */
      public function render() {
-        $notifications = Session::get('notify::notifications');
-        if(!$notifications) $notifications = [];
-        $output = '<script type="text/javascript">';
-        $lastConfig = [];
-        foreach($notifications as $notification) {
 
-            $config = Config('Notify.options');
+          $notifications = Session::get('notify::notifications');
 
-            if(count($notification['options']) > 0) {
-                // Merge user supplied options with default options
-                $config = array_merge($config, $notification['options']);
-            }
+          if(!$notifications) $notifications = [];
 
-            // Config persists between toasts
-            if($config != $lastConfig) {
-                $output .= 'Notify.options = ' . json_encode($config) . ';';
-                $lastConfig = $config;
-            }
+          $lastConfig = [];
 
-                 // create the notification
-               $output .= "var notification = new NotificationFx({
-                      message : ".'"'."<span class='icon  text-".$notification['type']."'><i class='".$notification['icon']."'></i></span><p class= text-".$notification['type'].">".$notification['message']."</p>".'"'.",
-                      layout : 'attached',
-                      effect : 'bouncyflip',
-                      type   : 'notice', // notice, warning or error
-                  });
-
-                  // show the notification
-                  notification.show();";
-            }
-        $output .= '</script>';
-
-        return $output;
+       return View('Notify::notify', compact('notifications', 'lastConfig'));
     }
 
     /**

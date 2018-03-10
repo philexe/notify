@@ -16,6 +16,7 @@ class NotifyServiceProvider extends ServiceProvider
     {
        $this->publishes([
            __DIR__ . '/Config/Notify.php' => config_path('Notify.php'),
+           __DIR__.'/assets'  => public_path('notify')
        ]);
 
     }
@@ -33,9 +34,8 @@ class NotifyServiceProvider extends ServiceProvider
              return new Notify;
          });
 
-         $this->mergeConfigFrom(
-             __DIR__ . '/Config/Notify.php', 'Notify'
-        );
+         $this->mergeConfigFrom( __DIR__ .'/Config/Notify.php', 'Notify');
+         $this->loadViewsFrom(__DIR__.'/views', 'Notify');
 
     }
 }
